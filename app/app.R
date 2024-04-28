@@ -24,12 +24,12 @@ ui <- fluidPage(
          
          # ----------------------------------
          # tabe panel 2
-         tabPanel("Portfolio",
+         tabPanel("Portfolio (coming soon)",
          ),
          
          # ----------------------------------
          # tabe panel 2
-         tabPanel("Publikationen",
+         tabPanel("Publications (coming soon)",
          ),
   )
 )
