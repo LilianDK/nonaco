@@ -5,8 +5,6 @@ library(shinyBS)
 library(superml)
 library(DT)
 
-source("data.R")
-
 # UI ----
 ui <- fluidPage(
   includeCSS("www/style/style.css"),
@@ -77,8 +75,10 @@ ui <- fluidPage(
 server <- function(input, output) {
 
   output$ranking <- DT::renderDT({  
+    source("data.R")
+    
     sentence <- input$search
-    test <- bm_25(document=sentence, corpus=cool_people$Title, top_n = 2)
+    test <- bm_25(document=sentence, corpus=docs[,1], top_n = 2)
     
     vector <- data.frame(title = character(0), rank = numeric(0))
     for (i in 1:length(test)) {
@@ -89,6 +89,7 @@ server <- function(input, output) {
     
     output <- merge(docs, vector, by = "title")
     output <- output[order(output$rank, decreasing = TRUE),]
+    #title <- output[1,1]
   })
 
 }
