@@ -6,6 +6,14 @@ library(DT)
 
 source("data.R")
 
+css <- "
+mark {
+  padding: 0;
+  background-color: white;
+  color: red;
+}
+"
+
 # UI ----
 ui <- fluidPage(
   includeCSS("www/style/style.css"),
@@ -57,7 +65,7 @@ ui <- fluidPage(
                                            column(3,
                                                   "Publication date:", textOutput("date_1", inline = TRUE)),
                                            column(3,
-                                                  "Publication outlet:", textOutput("outlet_2", inline = TRUE)),
+                                                  "Publication outlet:", textOutput("outlet_1", inline = TRUE)),
                                            column(3,)
                                          ),
                                          fluidRow(

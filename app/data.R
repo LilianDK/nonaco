@@ -6,4 +6,3 @@ pub2 <- c("Übersicht zur neuen U.S. KI Executive Order", "Trend Report", "6.03.
 docs <- data.frame()
 docs <- rbind(docs, pub1, pub2)
 names(docs) <- c("title", "outlet", "date", "language", "url", "abstract")
-
