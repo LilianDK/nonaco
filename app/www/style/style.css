@@ -1,25 +1,15 @@
-.carousel h1:after, .carousel h1:before {
-  content: " ";
-  display: none;
-  width: 0;
-  height: 2px;
-  margin: 0;
+body {
+     background:#eeeeee;
 }
 
-h1:after, h1:before {
-    content: " ";
-    display: block;
-    width: 100px;
-    height: 2px;
-    margin: 20px auto 20px;
-    background: #4fbfa8;
+.panel-transparent {
+    background: none;
 }
 
-h1.title:after, h1.title:before {
-    content: " ";
-    display: block;
-    width: 100%;
-    height: 2px;
-    margin: 20px auto 20px;
-    background: #4fbfa8;
+.panel-transparent .panel-heading{
+    background: rgba(29,43,71, 0.2)!important;
+}
+
+.panel-transparent .panel-body{
+    background: rgba(29,43,71, 0.2)!important;
 }
