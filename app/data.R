@@ -7,6 +7,7 @@ pub3 <- c("Levels of Automation with AI", "Medium", "16.04.2024", "English", "ht
     With augmentation we emphasize the real potential of the digital age.
     Orientation along levels of automation make requirements for AI applications more crispy.
     With a clear understanding of the levels of automation and associated risks, higher automation levels are achievable.")
+
 pub4 <- c("Number crunching: How many GPUs for hosting LLMs?", "Medium", "19.03.2024", "English", "https://medium.com/@lilian.do.khac/number-crunching-how-many-gpus-for-hosting-llms-5c36dc723ed6", "Investment decisions to host LLMs on-premises are build on knowledge regarding realizing LLM services, LLMs themselves and hardware capabilities.
 Take Aways
 
@@ -32,7 +33,29 @@ can afford to take. The integration of modern AI capabilities will fundamentally
 lead to increases in productivity. The skills of human and machine collaboration as well as enabling
 factors for such are becoming a key competitive advantage.")
 
+pub7 <- c("Digitale Transformation: Wie es bei Organisationen schneller vorangehen kann, White Paper Serie des Lehrstuhls ABWL", "Marburg University", "April 2022", "German", "https://www.uni-marburg.de/de/fb02/professuren/bwl/digiprozess/whitepaperserie/white_paper_bwl_dl_leyer_vol4_nr1_de.pdf", "Die Weiterentwicklung von Unternehmen im
+digitalen Zeitalter verzögert sich oft und führt
+dazu, dass einige Unternehmen Stück für Stück
+den Anschluss verlieren. Dabei verlieren sie an
+zwei Stellen den Anschluss. Die eine Stelle ist
+die zum Kunden, denn wegen schleppender
+Modernisierung ihrer Geschäftsmodelle wird
+die zunehmende Erfüllung der stark individu-
+ellen Marktnachfrage nicht bedient. Die andere
+Stelle ist nach innen gerichtet, nämlich die Un-
+ternehmenskultur. Konkreter: Der Umgang mit
+den Mitarbeitern im digitalen Zeitalter. Unter-
+nehmen verlieren zunehmendst den Anschluss
+und ein Feingefühl für die Bedürfnisse ihrer
+doch recht wichtigen „Digital Natives“ Mitarbei-
+ter. Die Gründe sind vielfältig und auch nicht
+neu, auch wenn einige verhaltensorientiert ge-
+prägte Gründe inzwischen häufiger oder extre-
+mer auftreten. Dieses Whitepaper ist daher ein
+Reminder, wie einige dieser wichtigen Aspekte
+adressiert werden können. Es erhebt allerdings
+keinen Anspruch auf Vollständigkeit.")
 
 docs <- data.frame()
-docs <- rbind(docs, pub1, pub2, pub3, pub4, pub5, pub6)
+docs <- rbind(docs, pub1, pub2, pub3, pub4, pub5, pub6, pub7)
 names(docs) <- c("title", "outlet", "date", "language", "url", "abstract")
