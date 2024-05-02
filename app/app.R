@@ -24,14 +24,14 @@ ui <- fluidPage(
   ),
 
   navbarPage(title = "cohano",
-         footer = includeHTML("footer.html"),
+         footer = includeHTML("www/footer.html"),
          fluid = TRUE,
          collapsible = TRUE,
   
          # ----------------------------------
          # tabe panel 1
          tabPanel("Home",
-                  includeHTML("home.html")
+                  includeHTML("www/home.html")
          ),
          
          # ----------------------------------
@@ -116,6 +116,37 @@ ui <- fluidPage(
                           ),
                           tags$p(h6("")),
                       )
+                  ),
+                  div(class="panel panel-default",
+                      div(class="panel-body",  
+                          tags$div( align = "center",
+                                    div( align = "left", 
+                                         h4(strong(textOutput("title_3"))),
+                                         fluidRow(
+                                           column(3,
+                                                  "Language: ", textOutput("language_3", inline = TRUE)),
+                                           column(3,
+                                                  "Publication date:", textOutput("date_3", inline = TRUE)),
+                                           column(3,
+                                                  "Publication outlet:", textOutput("outlet_3", inline = TRUE)),
+                                           column(3,)
+                                         ),
+                                         fluidRow(
+                                           column(12,
+                                                  "Abstract:", textOutput("abstract_3"))
+                                         ),
+                                         fluidRow(
+                                           column(12,
+                                                  "Link:", textOutput("url_3", inline = TRUE))
+                                         ),
+                                         fluidRow(
+                                           column(12,
+                                                  "BM25 score:", textOutput("rank_3", inline = TRUE))
+                                         )
+                                    )
+                          ),
+                          tags$p(h6("")),
+                      )
                   )
          )
          ),
@@ -175,6 +206,57 @@ server <- function(input, output) {
     title <- output[2,1]
   })
   
+  output$title_3 <- renderText({  
+    
+    sentence <- input$search
+    test <- bm_25(document=sentence, corpus=docs[,1], top_n = 2)
+    
+    vector <- data.frame(title = character(0), rank = numeric(0))
+    for (i in 1:length(test)) {
+      row <- cbind(names(test)[[i]], unname(test)[[i]])
+      vector <- rbind(vector, row)
+    }
+    names(vector) <- c("title", "rank")
+    
+    output <- merge(docs, vector, by = "title")
+    output <- output[order(output$rank, decreasing = TRUE),]
+    title <- output[3,1]
+  })
+  
+  output$title_4 <- renderText({  
+    
+    sentence <- input$search
+    test <- bm_25(document=sentence, corpus=docs[,1], top_n = 2)
+    
+    vector <- data.frame(title = character(0), rank = numeric(0))
+    for (i in 1:length(test)) {
+      row <- cbind(names(test)[[i]], unname(test)[[i]])
+      vector <- rbind(vector, row)
+    }
+    names(vector) <- c("title", "rank")
+    
+    output <- merge(docs, vector, by = "title")
+    output <- output[order(output$rank, decreasing = TRUE),]
+    title <- output[4,1]
+  })
+  
+  output$title_5 <- renderText({  
+    
+    sentence <- input$search
+    test <- bm_25(document=sentence, corpus=docs[,1], top_n = 2)
+    
+    vector <- data.frame(title = character(0), rank = numeric(0))
+    for (i in 1:length(test)) {
+      row <- cbind(names(test)[[i]], unname(test)[[i]])
+      vector <- rbind(vector, row)
+    }
+    names(vector) <- c("title", "rank")
+    
+    output <- merge(docs, vector, by = "title")
+    output <- output[order(output$rank, decreasing = TRUE),]
+    title <- output[5,1]
+  })
+  
   output$outlet_1 <- renderText({  
     
     sentence <- input$search
@@ -207,6 +289,57 @@ server <- function(input, output) {
     output <- merge(docs, vector, by = "title")
     output <- output[order(output$rank, decreasing = TRUE),]
     outlet <- output[2,2]
+  })
+  
+  output$outlet_3 <- renderText({  
+    
+    sentence <- input$search
+    test <- bm_25(document=sentence, corpus=docs[,1], top_n = 2)
+    
+    vector <- data.frame(title = character(0), rank = numeric(0))
+    for (i in 1:length(test)) {
+      row <- cbind(names(test)[[i]], unname(test)[[i]])
+      vector <- rbind(vector, row)
+    }
+    names(vector) <- c("title", "rank")
+    
+    output <- merge(docs, vector, by = "title")
+    output <- output[order(output$rank, decreasing = TRUE),]
+    outlet <- output[3,2]
+  })
+  
+  output$outlet_4 <- renderText({  
+    
+    sentence <- input$search
+    test <- bm_25(document=sentence, corpus=docs[,1], top_n = 2)
+    
+    vector <- data.frame(title = character(0), rank = numeric(0))
+    for (i in 1:length(test)) {
+      row <- cbind(names(test)[[i]], unname(test)[[i]])
+      vector <- rbind(vector, row)
+    }
+    names(vector) <- c("title", "rank")
+    
+    output <- merge(docs, vector, by = "title")
+    output <- output[order(output$rank, decreasing = TRUE),]
+    outlet <- output[4,2]
+  })
+  
+  output$outlet_5 <- renderText({  
+    
+    sentence <- input$search
+    test <- bm_25(document=sentence, corpus=docs[,1], top_n = 2)
+    
+    vector <- data.frame(title = character(0), rank = numeric(0))
+    for (i in 1:length(test)) {
+      row <- cbind(names(test)[[i]], unname(test)[[i]])
+      vector <- rbind(vector, row)
+    }
+    names(vector) <- c("title", "rank")
+    
+    output <- merge(docs, vector, by = "title")
+    output <- output[order(output$rank, decreasing = TRUE),]
+    outlet <- output[5,2]
   })
   
   output$language_1 <- renderText({  
@@ -243,6 +376,57 @@ server <- function(input, output) {
     language <- output[2,4]
   })
   
+  output$language_3 <- renderText({  
+    
+    sentence <- input$search
+    test <- bm_25(document=sentence, corpus=docs[,1], top_n = 2)
+    
+    vector <- data.frame(title = character(0), rank = numeric(0))
+    for (i in 1:length(test)) {
+      row <- cbind(names(test)[[i]], unname(test)[[i]])
+      vector <- rbind(vector, row)
+    }
+    names(vector) <- c("title", "rank")
+    
+    output <- merge(docs, vector, by = "title")
+    output <- output[order(output$rank, decreasing = TRUE),]
+    language <- output[3,4]
+  })
+  
+  output$language_4 <- renderText({  
+    
+    sentence <- input$search
+    test <- bm_25(document=sentence, corpus=docs[,1], top_n = 2)
+    
+    vector <- data.frame(title = character(0), rank = numeric(0))
+    for (i in 1:length(test)) {
+      row <- cbind(names(test)[[i]], unname(test)[[i]])
+      vector <- rbind(vector, row)
+    }
+    names(vector) <- c("title", "rank")
+    
+    output <- merge(docs, vector, by = "title")
+    output <- output[order(output$rank, decreasing = TRUE),]
+    language <- output[4,4]
+  })
+  
+  output$language_5 <- renderText({  
+    
+    sentence <- input$search
+    test <- bm_25(document=sentence, corpus=docs[,1], top_n = 2)
+    
+    vector <- data.frame(title = character(0), rank = numeric(0))
+    for (i in 1:length(test)) {
+      row <- cbind(names(test)[[i]], unname(test)[[i]])
+      vector <- rbind(vector, row)
+    }
+    names(vector) <- c("title", "rank")
+    
+    output <- merge(docs, vector, by = "title")
+    output <- output[order(output$rank, decreasing = TRUE),]
+    language <- output[5,4]
+  })
+  
   output$date_1 <- renderText({  
     
     sentence <- input$search
@@ -275,6 +459,57 @@ server <- function(input, output) {
     output <- merge(docs, vector, by = "title")
     output <- output[order(output$rank, decreasing = TRUE),]
     date <- output[2,3]
+  })
+  
+  output$date_3 <- renderText({  
+    
+    sentence <- input$search
+    test <- bm_25(document=sentence, corpus=docs[,1], top_n = 2)
+    
+    vector <- data.frame(title = character(0), rank = numeric(0))
+    for (i in 1:length(test)) {
+      row <- cbind(names(test)[[i]], unname(test)[[i]])
+      vector <- rbind(vector, row)
+    }
+    names(vector) <- c("title", "rank")
+    
+    output <- merge(docs, vector, by = "title")
+    output <- output[order(output$rank, decreasing = TRUE),]
+    date <- output[3,3]
+  })
+  
+  output$date_4 <- renderText({  
+    
+    sentence <- input$search
+    test <- bm_25(document=sentence, corpus=docs[,1], top_n = 2)
+    
+    vector <- data.frame(title = character(0), rank = numeric(0))
+    for (i in 1:length(test)) {
+      row <- cbind(names(test)[[i]], unname(test)[[i]])
+      vector <- rbind(vector, row)
+    }
+    names(vector) <- c("title", "rank")
+    
+    output <- merge(docs, vector, by = "title")
+    output <- output[order(output$rank, decreasing = TRUE),]
+    date <- output[4,3]
+  })
+  
+  output$date_5 <- renderText({  
+    
+    sentence <- input$search
+    test <- bm_25(document=sentence, corpus=docs[,1], top_n = 2)
+    
+    vector <- data.frame(title = character(0), rank = numeric(0))
+    for (i in 1:length(test)) {
+      row <- cbind(names(test)[[i]], unname(test)[[i]])
+      vector <- rbind(vector, row)
+    }
+    names(vector) <- c("title", "rank")
+    
+    output <- merge(docs, vector, by = "title")
+    output <- output[order(output$rank, decreasing = TRUE),]
+    date <- output[5,3]
   })
   
   output$url_1 <- renderText({  
@@ -311,6 +546,57 @@ server <- function(input, output) {
     url <- output[2,5]
   })
   
+  output$url_3 <- renderText({  
+    
+    sentence <- input$search
+    test <- bm_25(document=sentence, corpus=docs[,1], top_n = 2)
+    
+    vector <- data.frame(title = character(0), rank = numeric(0))
+    for (i in 1:length(test)) {
+      row <- cbind(names(test)[[i]], unname(test)[[i]])
+      vector <- rbind(vector, row)
+    }
+    names(vector) <- c("title", "rank")
+    
+    output <- merge(docs, vector, by = "title")
+    output <- output[order(output$rank, decreasing = TRUE),]
+    url <- output[3,5]
+  })
+  
+  output$url_4 <- renderText({  
+    
+    sentence <- input$search
+    test <- bm_25(document=sentence, corpus=docs[,1], top_n = 2)
+    
+    vector <- data.frame(title = character(0), rank = numeric(0))
+    for (i in 1:length(test)) {
+      row <- cbind(names(test)[[i]], unname(test)[[i]])
+      vector <- rbind(vector, row)
+    }
+    names(vector) <- c("title", "rank")
+    
+    output <- merge(docs, vector, by = "title")
+    output <- output[order(output$rank, decreasing = TRUE),]
+    url <- output[4,5]
+  })
+  
+  output$url_5 <- renderText({  
+    
+    sentence <- input$search
+    test <- bm_25(document=sentence, corpus=docs[,1], top_n = 2)
+    
+    vector <- data.frame(title = character(0), rank = numeric(0))
+    for (i in 1:length(test)) {
+      row <- cbind(names(test)[[i]], unname(test)[[i]])
+      vector <- rbind(vector, row)
+    }
+    names(vector) <- c("title", "rank")
+    
+    output <- merge(docs, vector, by = "title")
+    output <- output[order(output$rank, decreasing = TRUE),]
+    url <- output[5,5]
+  })
+  
   output$rank_1 <- renderText({  
     
     sentence <- input$search
@@ -345,6 +631,57 @@ server <- function(input, output) {
     rank <- output[2,7]
   })
   
+  output$rank_3 <- renderText({  
+    
+    sentence <- input$search
+    test <- bm_25(document=sentence, corpus=docs[,1], top_n = 2)
+    
+    vector <- data.frame(title = character(0), rank = numeric(0))
+    for (i in 1:length(test)) {
+      row <- cbind(names(test)[[i]], unname(test)[[i]])
+      vector <- rbind(vector, row)
+    }
+    names(vector) <- c("title", "rank")
+    
+    output <- merge(docs, vector, by = "title")
+    output <- output[order(output$rank, decreasing = TRUE),]
+    rank <- output[3,7]
+  })
+  
+  output$rank_4 <- renderText({  
+    
+    sentence <- input$search
+    test <- bm_25(document=sentence, corpus=docs[,1], top_n = 2)
+    
+    vector <- data.frame(title = character(0), rank = numeric(0))
+    for (i in 1:length(test)) {
+      row <- cbind(names(test)[[i]], unname(test)[[i]])
+      vector <- rbind(vector, row)
+    }
+    names(vector) <- c("title", "rank")
+    
+    output <- merge(docs, vector, by = "title")
+    output <- output[order(output$rank, decreasing = TRUE),]
+    rank <- output[4,7]
+  })
+  
+  output$rank_5 <- renderText({  
+    
+    sentence <- input$search
+    test <- bm_25(document=sentence, corpus=docs[,1], top_n = 2)
+    
+    vector <- data.frame(title = character(0), rank = numeric(0))
+    for (i in 1:length(test)) {
+      row <- cbind(names(test)[[i]], unname(test)[[i]])
+      vector <- rbind(vector, row)
+    }
+    names(vector) <- c("title", "rank")
+    
+    output <- merge(docs, vector, by = "title")
+    output <- output[order(output$rank, decreasing = TRUE),]
+    rank <- output[5,7]
+  })
+  
   output$abstract_1 <- renderText({  
     
     sentence <- input$search
@@ -377,6 +714,57 @@ server <- function(input, output) {
     output <- merge(docs, vector, by = "title")
     output <- output[order(output$rank, decreasing = TRUE),]
     rank <- output[2,6]
+  })
+  
+  output$abstract_3 <- renderText({  
+    
+    sentence <- input$search
+    test <- bm_25(document=sentence, corpus=docs[,1], top_n = 2)
+    
+    vector <- data.frame(title = character(0), rank = numeric(0))
+    for (i in 1:length(test)) {
+      row <- cbind(names(test)[[i]], unname(test)[[i]])
+      vector <- rbind(vector, row)
+    }
+    names(vector) <- c("title", "rank")
+    
+    output <- merge(docs, vector, by = "title")
+    output <- output[order(output$rank, decreasing = TRUE),]
+    rank <- output[3,6]
+  })
+  
+  output$abstract_4 <- renderText({  
+    
+    sentence <- input$search
+    test <- bm_25(document=sentence, corpus=docs[,1], top_n = 2)
+    
+    vector <- data.frame(title = character(0), rank = numeric(0))
+    for (i in 1:length(test)) {
+      row <- cbind(names(test)[[i]], unname(test)[[i]])
+      vector <- rbind(vector, row)
+    }
+    names(vector) <- c("title", "rank")
+    
+    output <- merge(docs, vector, by = "title")
+    output <- output[order(output$rank, decreasing = TRUE),]
+    rank <- output[4,6]
+  })
+  
+  output$abstract_5 <- renderText({  
+    
+    sentence <- input$search
+    test <- bm_25(document=sentence, corpus=docs[,1], top_n = 2)
+    
+    vector <- data.frame(title = character(0), rank = numeric(0))
+    for (i in 1:length(test)) {
+      row <- cbind(names(test)[[i]], unname(test)[[i]])
+      vector <- rbind(vector, row)
+    }
+    names(vector) <- c("title", "rank")
+    
+    output <- merge(docs, vector, by = "title")
+    output <- output[order(output$rank, decreasing = TRUE),]
+    rank <- output[5,6]
   })
 }
 #shinylive::export(appdir = "app", destdir = "docs")
