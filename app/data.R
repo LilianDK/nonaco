@@ -7,20 +7,32 @@ pub3 <- c("Levels of Automation with AI", "Medium", "16.04.2024", "English", "ht
     With augmentation we emphasize the real potential of the digital age.
     Orientation along levels of automation make requirements for AI applications more crispy.
     With a clear understanding of the levels of automation and associated risks, higher automation levels are achievable.")
-#pub4 <- c("Number crunching: How many GPUs for hosting LLMs?", "Medium", "19.03.2024", "English", "https://medium.com/@lilian.do.khac/number-crunching-how-many-gpus-for-hosting-llms-5c36dc723ed6", "Investment decisions to host LLMs on-premises are build on knowledge regarding realizing LLM services, LLMs themselves and hardware capabilities.
-#Take Aways
+pub4 <- c("Number crunching: How many GPUs for hosting LLMs?", "Medium", "19.03.2024", "English", "https://medium.com/@lilian.do.khac/number-crunching-how-many-gpus-for-hosting-llms-5c36dc723ed6", "Investment decisions to host LLMs on-premises are build on knowledge regarding realizing LLM services, LLMs themselves and hardware capabilities.
+Take Aways
 
-#1. On-Prem Hosting Motivation: GDPR, IP, and reduced cloud dependencies drive on-prem LLM hosting.
+1. On-Prem Hosting Motivation: GDPR, IP, and reduced cloud dependencies drive on-prem LLM hosting.
 
-#2. Hardware Sizing Complexity: On-prem LLM hardware requirements are multidimensional.
+2. Hardware Sizing Complexity: On-prem LLM hardware requirements are multidimensional.
 
-#3. Practical GPU Examples: Meta’s Llama-2–7B and 70B models GPU needs.")
-#pub5 <- c("Three facts on ChatGPT — which grape to reap?", "Medium", "17.03.2024", "English", "https://medium.com/@lilian.do.khac/three-facts-on-chatgpt-which-grape-to-reap-6c17a97c4ce8", "Fact one: ChatGPT essentially went viral by setting a rates that surpass adoption rates of popular platforms like TikTok or Instagram. Essentially it is becoming the Nutella, Tempo, Uhu, or Pampers and Co in common phrasing as a synonym for a seemingly very useful and smart AI. record on its user adoption
+3. Practical GPU Examples: Meta’s Llama-2–7B and 70B models GPU needs.")
+pub5 <- c("Three facts on ChatGPT — which grape to reap?", "Medium", "17.03.2024", "English", "https://medium.com/@lilian.do.khac/three-facts-on-chatgpt-which-grape-to-reap-6c17a97c4ce8", "Fact one: ChatGPT essentially went viral by setting a rates that surpass adoption rates of popular platforms like TikTok or Instagram. Essentially it is becoming the Nutella, Tempo, Uhu, or Pampers and Co in common phrasing as a synonym for a seemingly very useful and smart AI. record on its user adoption
 
-#Fact two: There are some more such “AI things” that can be smart and seemingly useful.
+Fact two: There are some more such “AI things” that can be smart and seemingly useful.
 
-#Fact three: But there are not that many more.")
+Fact three: But there are not that many more.")
+
+pub6 <- c("Artificial General Intelligence Unravelled: A Cockpit to Navigate IT-Capabilities, Regulatory Constraints, Business Processes and User Experience.", "Marburg University", "22.09.2023", "English", "https://www.uni-marburg.de/de/fb02/professuren/bwl/digiprozess/forschung/202309_whitepaper_artificial-general-intelligence-unravelled-_v1-0_en.pdf", "AI and foundation models develop with an unprecedented speed and challenge organisations
+around the globe: we witness changing customer expectations, expectations of employees and
+new requirements to IT-capabilities. At the same time digital regulation, particularly for AI, is evolving and expected to be present in the
+second half this current decade. Therefore, the development of these regulations must be
+monitored closely and applied in far-sight to avoid issues with compliance. The provision of such powerful AI models in business applications demands for a high-performance
+computing infrastructure and this means a significant investment decision. Decision-makers must
+derive from their desired business vision what they can integrate feasibly and how much risk they
+can afford to take. The integration of modern AI capabilities will fundamentally change job designs and is expected to
+lead to increases in productivity. The skills of human and machine collaboration as well as enabling
+factors for such are becoming a key competitive advantage.")
+
 
 docs <- data.frame()
-docs <- rbind(docs, pub1, pub2, pub3)
+docs <- rbind(docs, pub1, pub2, pub3, pub4, pub5, pub6)
 names(docs) <- c("title", "outlet", "date", "language", "url", "abstract")
