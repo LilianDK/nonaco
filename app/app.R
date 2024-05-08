@@ -7,28 +7,20 @@ library(DT)
 
 source("data.R")
 
-css <- "
-mark {
-  padding: 0;
-  background-color: white;
-  color: red;
-}
-"
-
 # UI ----
 ui <- fluidPage(
   includeCSS("www/style/style.css"),
   titlePanel(
     title =
       tags$link(rel = "icon", type = "image/png", href = "https://raw.githubusercontent.com/LilianDK/nonaco/main/images/logo.png"),
-    "cohano"
+    "BEW/ON"
   ),
 
-  navbarPage(title = "cohano",
+  navbarPage(title = "BEW/ON",
          footer = includeHTML("www/footer.html"),
          fluid = TRUE,
          collapsible = TRUE,
-  
+         
          # ----------------------------------
          # tabe panel 1
          tabPanel("Home",
@@ -67,13 +59,23 @@ ui <- fluidPage(
                                       shinyInput_label_embed(
                                         shiny_iconlink() %>%
                                           bs_embed_popover(
-                                            title = "Enter some search terms in the input box below to re-rank the publications.", content = "", placement = "left"
+                                            title = "Enter some search terms in the input box below to re-rank the publications. For re-ranking the BM25 algorithm is used in R Shiny.", content = "", placement = "left"
                                           )
                                       ),
                                     )
                           ),
                       )
                    ),      
+                  ),
+                  column(9,
+                         div(class="panel panel-default",
+                             div(class="panel-body",  
+                                 tags$div( align = "center",
+
+                                 ),
+                                 tags$p(h6("")),
+                             )
+                         )
                   ),
                   column(9,
                   div(class="panel panel-default",
@@ -104,7 +106,6 @@ ui <- fluidPage(
                                            column(12,
                                                   "BM25 score:", textOutput("rank_1", inline = TRUE))
                                          ),
-                                         #DT::DTOutput("ranking")
                                     )
                           ),
                           tags$p(h6("")),
@@ -244,73 +245,13 @@ ui <- fluidPage(
                                       ),
                                       tags$p(h6("")),
                                   )
-                              )
+                              ) 
                               ) %>%
                     bs_set_opts(panel_type = "default") %>%
                       bs_append(title = "The rest ...", 
                                 div(class="panel panel-default",
                                     div(class="panel-body",  
-                                        tags$div( align = "center",
-                                                  div( align = "left", 
-                                                       h4(strong(textOutput("title_6"))),
-                                                       fluidRow(
-                                                         column(3,
-                                                                strong("Language: "), textOutput("language_6", inline = TRUE)),
-                                                         column(3,
-                                                                strong("Publication date: "), textOutput("date_6", inline = TRUE)),
-                                                         column(3,
-                                                                strong("Publication outlet: "), textOutput("outlet_6", inline = TRUE)),
-                                                         column(3,)
-                                                       ),
-                                                       fluidRow(
-                                                         column(12,
-                                                                tags$br(),
-                                                                strong("Abstract:"), textOutput("abstract_6"))
-                                                       ),
-                                                       fluidRow(
-                                                         column(12,
-                                                                tags$br(),
-                                                                strong("Link: "), textOutput("url_6", inline = TRUE))
-                                                       ),
-                                                       fluidRow(
-                                                         column(12,
-                                                                "BM25 score:", textOutput("rank_6", inline = TRUE))
-                                                       )
-                                                  )
-                                        ),
-                                    )
-                                ),
-                                tags$br(),
-                                div(class="panel panel-default",
-                                    div(class="panel-body",  
-                                        tags$div( align = "center",
-                                                  div( align = "left", 
-                                                       h4(strong(textOutput("title_7"))),
-                                                       fluidRow(
-                                                         column(3,
-                                                                strong("Language: "), textOutput("language_7", inline = TRUE)),
-                                                         column(3,
-                                                                strong("Publication date: "), textOutput("date_7", inline = TRUE)),
-                                                         column(3,
-                                                                strong("Publication outlet: "), textOutput("outlet_7", inline = TRUE)),
-                                                         column(3,)
-                                                       ),
-                                                       fluidRow(
-                                                         column(12,
-                                                                tags$br(),
-                                                                strong("Abstract:"), textOutput("abstract_7"))
-                                                       ),
-                                                       fluidRow(
-                                                         column(12,
-                                                                tags$br(),
-                                                                strong("Link: "), textOutput("url_7", inline = TRUE))
-                                                       ),
-                                                       fluidRow(
-                                                         column(12,
-                                                                "BM25 score:", textOutput("rank_7", inline = TRUE))
-                                                       )
-                                                  )
-                                        ),
+                                        DT::DTOutput("ranking")
                                     )
                                 )
                                 )
@@ -333,10 +274,11 @@ server <- function(input, output) {
       row <- cbind(names(test)[[i]], unname(test)[[i]])
       vector <- rbind(vector, row)
     }
-    names(vector) <- c("title", "rank")
+    names(vector) <- c("title", "BM25_score")
     
     output <- merge(docs, vector, by = "title")
-    output <- output[order(output$rank, decreasing = TRUE),]
+    output <- output[order(output$BM25_score, decreasing = TRUE),]
+    output <- output[5:nrow(docs),]
   })
 
   output$title_1 <- renderText({  
