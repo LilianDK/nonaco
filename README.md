@@ -18,10 +18,13 @@ The front-end allows you to use the plain playground just like in the respective
 └── app
     └── app.R
         └── www
+            └── home.html
+            └── footer.html
         └── data
 └── docs
     ├── edit
     └── shinylive
+└── images
 ````
 
     
