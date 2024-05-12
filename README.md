@@ -6,6 +6,8 @@
     <br> 
 </p>
 
+![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+
 ## 📝 Table of Contents
 * [About](#about)
 * [Showcases](#usage)
