@@ -2,7 +2,7 @@
 
 ---
 
-<p align="center"> In this repository I am exploring Shinylive for building my personal homepage deployed on Github Pages. Shinylive is a new application for running Shiny Apps entirely, severless, in a browser. Shinylive joins the programming frameworks for sharing intelligent/data applications such as streamlit, gradio etc. etc. 
+<p align="center"> In this repository I am exploring Shinylive for building my personal homepage deployed on Github Pages. Shinylive is a new application for running Shiny Apps entirely, severless, in a browser. Shinylive joins the programming frameworks for sharing intelligent/data applications such as streamlit, gradio etc. etc. Though one must keep in mind that shinylive is actively in development, therefore there are limitations and frequent updates are to be expected. But it is already so so so sosososososo awwwwwwesome! <3 For my purposes I have rendered my Shiny app into a HTML static file (see the three methods to use Shinylive applications in Ramin's repo linked in the References section below).
     <br> 
 </p>
 
@@ -11,23 +11,26 @@
 * [References](#chap2)
 
 ## 🎈 App Structure <a name="chap1"></a>
-The front-end allows you to use the plain playground just like in the respective account to configure and try out prompt engineering. Further, there is also a functionality that allows you uploading a PDF file for which the selected page will be summarized. Finally, there is also a basic chat functionality to chat with the world knowledge of the llm.
+My app structure with some remarks is depicted below. With the app folder and app.R file it is pretty normal for a shiny app. With Shinylive the docs folder 
 
 ````
 .
-└── app
+└── app                        # shiny app
     └── app.R
         └── www
-            └── home.html
+            ├── home.html
             └── footer.html
-        └── data
-└── docs
-    ├── edit
+        └── data               # Currently I have no data folder and just a single R script with some data. Though for keeping a clean structure I would think about a data folder.
+└── docs                       # shinylive app
+    ├── edit                    
     └── shinylive
-└── images
+    └── app.json               # R code formatted as JSON
+    └── index.html             # HTML to construct web page
+└── images                     
 ````
 
     
 ## 🎉 References <a name = "chap2"></a>
 * See how to build a Shinylive App and deploying it on Github Pages: ![RamiKrispin/shinylive-r](https://medium.com/@rami.krispin/deploy-shiny-app-on-github-pages-b4cbd433bdc)
 * ![Documentation Resources](https://shiny.posit.co/py/docs/shinylive.html)
+* ![van Leemput (October 2023), Run a Shiny app in the browser with shinylive for R](https://hypebright.nl/index.php/en/2023/10/02/run-a-shiny-app-in-the-browser-with-shinylive-for-r/) 
