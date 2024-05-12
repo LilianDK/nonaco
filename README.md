@@ -1,16 +1,8 @@
-<h3 align="center">LLM Playground Front-End</h3>
-
-<div align="center">
-
-  [![Status](https://img.shields.io/badge/status-active-success.svg)]() 
-  [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)]() 
-  [![Version](https://img.shields.io/badge/version-2.0.3-blue.svg?cacheSeconds=2592000)]() 
-
-</div>
+<h3 align="center">Shinylive Application</h3>
 
 ---
 
-<p align="center"> In this project some basic front-ends are provivided that enable the webinterface based interaction with an LLM (APIs). Further, some pre-requisites are implemented on the interface design that allow for creating an abstraction layer against an account for an LLM such that multiple user can use the same account but without access to the account itself. We added some functionalities with Aleph Alpha such as Summarization, Document Processing and Question & Answering to the showcase. It is not meant to be beautiful code that can be transferred to production, rather it is meant to see something on the screen other than code.
+<p align="center"> In this repository I am exploring Shinylive for building my personal homepage deployed on Github Pages. Shinylive is a new application for running Shiny Apps entirely, severless, in a browser. Shinylive joins the programming frameworks for sharing intelligent/data applications such as streamlit, gradio etc. etc. 
     <br> 
 </p>
 
@@ -26,7 +18,7 @@
   * [Deployment using a docker image](#deployment1)
   * [Deployment building a docker image](#deployment2)
   * [Deployment using R Studio](#deployment3)
-* [Configuration](#configuration)
+* [Configuration](#configuration) 
   * [Configuration of front-end color scheme input files](#configcolor)
   * [Configuration of port (coming soon)](#configport)
   * [Configuration of sites (coming soon)](#configsites)
